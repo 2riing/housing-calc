@@ -27,14 +27,16 @@ export default function FormField({
       </Label>
       <div
         className={cn(
-          "flex items-center overflow-hidden rounded-xl border bg-background transition",
-          "focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/20",
-          error ? "border-destructive" : "border-input"
+          "group/field flex items-center overflow-hidden rounded-xl transition-all duration-200",
+          "bg-muted/50 border border-transparent",
+          "hover:bg-muted/70",
+          "focus-within:bg-background focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/20 focus-within:shadow-sm",
+          error && "border-destructive bg-destructive/5"
         )}
       >
         {children}
         {suffix && (
-          <span className="shrink-0 self-stretch flex items-center border-l border-input bg-muted px-3 text-[11px] font-medium text-muted-foreground">
+          <span className="shrink-0 pr-3 text-[11px] font-medium text-muted-foreground/50 group-focus-within/field:text-muted-foreground/70">
             {suffix}
           </span>
         )}

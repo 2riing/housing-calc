@@ -8,9 +8,16 @@
   ],
   "rules": [
     { "regionType": "regulated", "housingCount": 0, "isFirstTime": false, "ltv": 0.50, "note": "조정지역 무주택 일반" },
-    { "regionType": "regulated", "housingCount": 0, "isFirstTime": true,  "ltv": 0.80, "note": "조정지역 생애최초" },
+    { "regionType": "regulated", "housingCount": 0, "isFirstTime": true,  "ltv": 0.70, "note": "조정지역 생애최초" },
     { "regionType": "regulated", "housingCount": 1, "isFirstTime": false, "ltv": 0.50, "note": "조정지역 1주택 (처분조건부)" },
     { "regionType": "regulated", "housingCount": 2, "isFirstTime": false, "ltv": 0.00, "note": "조정지역 2주택 이상 — 주담대 원칙적 불가" },
+
+    { "regionType": "regulated", "housingCount": 0, "isFirstTime": false, "tag": "multi_child_2", "ltv": 0.70, "note": "조정지역 다자녀(2자녀) 우대" },
+    { "regionType": "regulated", "housingCount": 0, "isFirstTime": false, "tag": "multi_child_3", "ltv": 0.70, "note": "조정지역 다자녀(3자녀+) 우대" },
+    { "regionType": "metro",     "housingCount": 0, "isFirstTime": false, "tag": "multi_child_2", "ltv": 0.80, "note": "비조정 수도권 다자녀(2자녀) 우대" },
+    { "regionType": "metro",     "housingCount": 0, "isFirstTime": false, "tag": "multi_child_3", "ltv": 0.80, "note": "비조정 수도권 다자녀(3자녀+) 우대" },
+    { "regionType": "non_metro", "housingCount": 0, "isFirstTime": false, "tag": "multi_child_2", "ltv": 0.80, "note": "비수도권 다자녀(2자녀) 우대" },
+    { "regionType": "non_metro", "housingCount": 0, "isFirstTime": false, "tag": "multi_child_3", "ltv": 0.80, "note": "비수도권 다자녀(3자녀+) 우대" },
 
     { "regionType": "metro",     "housingCount": 0, "isFirstTime": false, "ltv": 0.70, "note": "비조정 수도권 무주택" },
     { "regionType": "metro",     "housingCount": 0, "isFirstTime": true,  "ltv": 0.80, "note": "비조정 수도권 생애최초" },

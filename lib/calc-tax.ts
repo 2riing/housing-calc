@@ -4,6 +4,8 @@ import type {
   TaxStep,
   TaxBracket,
   TaxRulesData,
+  BrokerageTier,
+  BrokerageFeeResult,
 } from "./types";
 
 /**
@@ -97,4 +99,32 @@ export function calculateCapitalGainsTax(
     appliedBracket,
     steps,
   };
+}
+
+/**
+ * 부동산 중개보수 계산 (매매 기준)
+ *
+ * 거래금액 구간별 상한 요율 적용, cap이 있으면 Math.min 처리
+ */
+export function calculateBrokerageFee(
+  salePrice: number,
+  tiers: BrokerageTier[]
+): BrokerageFeeResult {
+  let appliedRate = tiers[0].rate;
+  let appliedCap = tiers[0].cap;
+
+  for (const tier of tiers) {
+    if (tier.upTo === null || salePrice <= tier.upTo) {
+      appliedRate = tier.rate;
+      appliedCap = tier.cap;
+      break;
+    }
+  }
+
+  let fee = Math.floor(salePrice * appliedRate);
+  if (appliedCap !== null) {
+    fee = Math.min(fee, appliedCap);
+  }
+
+  return { fee, rate: appliedRate, cap: appliedCap };
 }

@@ -24,7 +24,7 @@
     {
       "id": "hf_didimdol",
       "title": "한국주택금융공사 디딤돌대출 안내",
-      "url": "https://www.hf.go.kr/hf/sub03/sub01.do",
+      "url": "https://www.hf.go.kr/ko/sub01/sub01_02_01.do",
       "publisher": "한국주택금융공사(HF)",
       "checkedAt": "2026-02-23"
     },
@@ -41,6 +41,13 @@
       "url": "https://www.fss.or.kr/fss/kr/main.html",
       "publisher": "금융감독원(FSS)",
       "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "molit_brokerage",
+      "title": "국토교통부 부동산 중개보수 요율표",
+      "url": "https://www.myhome.go.kr/",
+      "publisher": "국토교통부",
+      "checkedAt": "2026-02-24"
     }
   ]
 }

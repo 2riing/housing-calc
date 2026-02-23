@@ -1,23 +1,6 @@
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-
-const cards = [
-  {
-    href: "/buy",
-    title: "집을 살 수 있을까?",
-    desc: "월급, 저축, 대출 한도 — 현실적인 매수 가능 금액을 알려드립니다. 희망은 자유지만 통장은 정직하니까요.",
-  },
-  {
-    href: "/rent",
-    title: "전세를 얻을 수 있을까?",
-    desc: "버팀목, 디딤돌... 이름은 들어봤는데 나는 되는 건지? 소득, 자산, 무주택 여부만 넣으면 자격부터 한도까지.",
-  },
-  {
-    href: "/tax",
-    title: "집 팔면 남는 돈?",
-    desc: "팔면 얼마 남을까 — 양도세, 중개비 다 빼고 진짜 내 손에 들어오는 금액을 알려드립니다.",
-  },
-];
+import { cards } from "@/lib/cards";
 
 export default function Home() {
   return (
@@ -33,7 +16,7 @@ export default function Home() {
               <div>
                 <h2 className="font-bold text-foreground">{c.title}</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                  {c.desc}
+                  {c.subtitle}
                 </p>
               </div>
               <span className="mt-0.5 text-muted-foreground/40 transition-transform group-hover:translate-x-1 group-hover:text-primary">

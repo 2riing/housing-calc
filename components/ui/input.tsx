@@ -18,7 +18,7 @@ function Input({ className, type, variant = "default", ...props }: InputProps) {
           "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
         ],
         variant === "ghost" && [
-          "w-full min-w-0 bg-transparent py-2.5 px-3 text-sm outline-none transition-colors",
+          "w-full min-w-0 bg-transparent py-1.5 px-3 text-sm outline-none transition-colors",
           "placeholder:text-muted-foreground/50",
           "focus-visible:outline-none",
           "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",

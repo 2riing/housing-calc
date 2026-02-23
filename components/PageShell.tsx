@@ -43,10 +43,10 @@ export default function PageShell({
               전세
             </Link>
             <Link
-              href="/rent"
+              href="/guide"
               className="rounded-full px-4 py-1.5 transition hover:bg-primary/10 hover:text-primary"
             >
-              월세
+              봐라
             </Link>
           </nav>
         </div>

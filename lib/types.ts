@@ -53,6 +53,12 @@ export interface TaxBracket {
   deduction: number;
 }
 
+export interface BrokerageTier {
+  upTo: number | null;
+  rate: number;
+  cap: number | null;
+}
+
 export interface TaxRulesData {
   capitalGainsSimple: {
     version: string;
@@ -60,6 +66,13 @@ export interface TaxRulesData {
     localIncomeTaxRate: number;
     basicDeduction: number;
     brackets: TaxBracket[];
+    notes: string[];
+  };
+  brokerageFee: {
+    version: string;
+    sourceIds: string[];
+    type: string;
+    tiers: BrokerageTier[];
     notes: string[];
   };
 }
@@ -76,6 +89,7 @@ export interface LtvRule {
   regionType: string;
   housingCount: number;
   isFirstTime: boolean;
+  tag?: string;
   ltv: number;
   note: string;
 }
@@ -130,6 +144,17 @@ export interface TaxFormInput {
   expenses: number;
 }
 
+export interface ExpenseItems {
+  // 취득 시 비용
+  acquisitionTax: number;
+  acqBrokerageFee: number;
+  legalFee: number;
+  stampDutyBondCost: number;
+  // 보유 시 비용 (자본적 지출)
+  renovationCost: number;
+  capitalRepairs: number;
+}
+
 export interface TaxResult {
   gain: number;
   taxableGain: number;
@@ -139,6 +164,12 @@ export interface TaxResult {
   effectiveRate: number;
   appliedBracket: TaxBracket;
   steps: TaxStep[];
+}
+
+export interface BrokerageFeeResult {
+  fee: number;
+  rate: number;
+  cap: number | null;
 }
 
 export interface TaxStep {

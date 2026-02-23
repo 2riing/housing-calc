@@ -8,6 +8,7 @@ import FormField from "@/components/FormField";
 import Collapsible from "@/components/Collapsible";
 import Disclaimer from "@/components/Disclaimer";
 import SourceBadge from "@/components/SourceBadge";
+import { Input } from "@/components/ui/input";
 import { calculateCapitalGainsTax } from "@/lib/calc-tax";
 import { getSources, getTaxRules, findSourcesByIds } from "@/lib/data";
 import type { Source, TaxRulesData } from "@/lib/types";
@@ -54,43 +55,40 @@ export default function TaxPage() {
     );
   }, [v, rules]);
 
-  const nc =
-    "w-full bg-transparent py-2.5 px-3 text-right text-sm tabular-nums outline-none placeholder:text-stone-300";
-
   return (
     <PageShell>
       <h1 className="mb-1 text-xl font-bold">💸 집 팔면 남는 돈?</h1>
-      <p className="mb-6 text-sm text-stone-400">
+      <p className="mb-6 text-sm text-muted-foreground">
         양도세, 중개비 다 빼고 진짜 손에 쥐는 금액
       </p>
 
       {/* ── 입력 ── */}
-      <div className="grid grid-cols-3 gap-x-6 gap-y-4 rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
+      <div className="grid grid-cols-3 gap-x-6 gap-y-4 rounded-2xl border border-border bg-card p-5 shadow-sm">
         <FormField label="🏷️ 취득가" htmlFor="acquisitionPrice" suffix="만원">
-          <input id="acquisitionPrice" type="number" className={nc} {...register("acquisitionPrice", { valueAsNumber: true })} />
+          <Input id="acquisitionPrice" type="number" variant="ghost" className="text-right tabular-nums" {...register("acquisitionPrice", { valueAsNumber: true })} />
         </FormField>
         <FormField label="💴 양도가" htmlFor="salePrice" suffix="만원">
-          <input id="salePrice" type="number" className={nc} {...register("salePrice", { valueAsNumber: true })} />
+          <Input id="salePrice" type="number" variant="ghost" className="text-right tabular-nums" {...register("salePrice", { valueAsNumber: true })} />
         </FormField>
         <FormField label="🧾 필요경비" htmlFor="expenses" suffix="만원">
-          <input id="expenses" type="number" className={nc} {...register("expenses", { valueAsNumber: true })} />
+          <Input id="expenses" type="number" variant="ghost" className="text-right tabular-nums" {...register("expenses", { valueAsNumber: true })} />
         </FormField>
       </div>
 
       {/* ── 결과 ── */}
       {result && (
         <div className="mt-8">
-          <h2 className="mb-3 text-sm font-semibold text-stone-500">
+          <h2 className="mb-3 text-sm font-semibold text-muted-foreground">
             📋 계산 결과
           </h2>
 
           {result.gain <= 0 ? (
-            <div className="rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 p-6 text-center">
+            <div className="rounded-2xl bg-gradient-to-br from-emerald-50 to-green-50 p-6 text-center">
               <p className="text-3xl">🎉</p>
-              <p className="mt-2 font-semibold text-green-700">
+              <p className="mt-2 font-semibold text-emerald-700">
                 양도차익이 없어요!
               </p>
-              <p className="mt-1 text-sm text-green-500">
+              <p className="mt-1 text-sm text-emerald-500">
                 과세 대상이 아닙니다
               </p>
             </div>
@@ -120,21 +118,21 @@ export default function TaxPage() {
               </div>
 
               <div className="mt-3 grid grid-cols-2 gap-3">
-                <div className="rounded-xl bg-stone-50 px-4 py-3">
-                  <p className="text-[11px] text-stone-400">적용 세율</p>
+                <div className="rounded-xl bg-muted px-4 py-3">
+                  <p className="text-[11px] text-muted-foreground">적용 세율</p>
                   <p className="text-lg font-bold">
                     {formatPercent(result.appliedBracket.rate, 0)}
                   </p>
-                  <p className="text-[11px] text-stone-400">
+                  <p className="text-[11px] text-muted-foreground">
                     누진공제 {formatKRW(result.appliedBracket.deduction)}
                   </p>
                 </div>
-                <div className="rounded-xl bg-stone-50 px-4 py-3">
-                  <p className="text-[11px] text-stone-400">지방소득세</p>
+                <div className="rounded-xl bg-muted px-4 py-3">
+                  <p className="text-[11px] text-muted-foreground">지방소득세</p>
                   <p className="text-lg font-bold">
                     {formatKRW(result.localTax)}
                   </p>
-                  <p className="text-[11px] text-stone-400">산출세액의 10%</p>
+                  <p className="text-[11px] text-muted-foreground">산출세액의 10%</p>
                 </div>
               </div>
 
@@ -145,18 +143,18 @@ export default function TaxPage() {
                       key={i}
                       className="flex items-baseline justify-between text-xs"
                     >
-                      <span className="text-stone-500">{step.label}</span>
+                      <span className="text-muted-foreground">{step.label}</span>
                       <span className="font-mono font-medium">
                         {formatKRW(step.value)}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 space-y-1 border-t border-stone-100 pt-3">
+                <div className="mt-3 space-y-1 border-t border-border pt-3">
                   {result.steps
                     .filter((s) => s.formula)
                     .map((step, i) => (
-                      <p key={i} className="text-[11px] text-stone-400">
+                      <p key={i} className="text-[11px] text-muted-foreground">
                         {step.label}: {step.formula}
                       </p>
                     ))}

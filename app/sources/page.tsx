@@ -17,7 +17,7 @@ export default function SourcesPage() {
   return (
     <PageShell>
       <h1 className="mb-1 text-xl font-bold">📎 근거 자료 모음</h1>
-      <p className="mb-6 text-sm text-gray-400">
+      <p className="mb-6 text-sm text-muted-foreground">
         {updated
           ? `📅 데이터 기준일: ${updated.updatedAt}`
           : "불러오는 중..."}
@@ -30,24 +30,24 @@ export default function SourcesPage() {
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 rounded-2xl border border-gray-100 bg-white px-4 py-3.5 transition hover:border-blue-200 hover:shadow-sm"
+            className="flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3.5 transition hover:border-primary/30 hover:shadow-sm"
           >
             <span className="text-lg">🔗</span>
             <div className="min-w-0 flex-1">
-              <h2 className="text-sm font-medium text-gray-800">
+              <h2 className="text-sm font-medium text-foreground">
                 {s.title}
               </h2>
-              <p className="mt-0.5 text-[11px] text-gray-400">
+              <p className="mt-0.5 text-[11px] text-muted-foreground">
                 {s.publisher} · 확인일 {s.checkedAt}
               </p>
             </div>
-            <span className="shrink-0 text-sm text-gray-300">↗</span>
+            <span className="shrink-0 text-sm text-muted-foreground/40">↗</span>
           </a>
         ))}
       </div>
 
       {sources.length === 0 && (
-        <p className="py-16 text-center text-gray-300">
+        <p className="py-16 text-center text-muted-foreground/40">
           ⏳ 근거 자료를 불러오는 중...
         </p>
       )}

@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { Label } from "@/components/ui/label";
 
 interface Props {
   label: string;
@@ -17,18 +19,27 @@ export default function FormField({
 }: Props) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label htmlFor={htmlFor} className="text-[11px] font-medium text-stone-400">
+      <Label
+        htmlFor={htmlFor}
+        className="text-[11px] font-medium text-muted-foreground"
+      >
         {label}
-      </label>
-      <div className="flex items-center overflow-hidden rounded-xl border border-stone-200 bg-white transition focus-within:border-sky-400 focus-within:ring-2 focus-within:ring-sky-100">
+      </Label>
+      <div
+        className={cn(
+          "flex items-center overflow-hidden rounded-xl border bg-background transition",
+          "focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/20",
+          error ? "border-destructive" : "border-input"
+        )}
+      >
         {children}
         {suffix && (
-          <span className="shrink-0 self-stretch flex items-center border-l border-stone-200 bg-stone-50 px-3 text-[11px] font-medium text-stone-400">
+          <span className="shrink-0 self-stretch flex items-center border-l border-input bg-muted px-3 text-[11px] font-medium text-muted-foreground">
             {suffix}
           </span>
         )}
       </div>
-      {error && <p className="text-[11px] text-red-400">{error}</p>}
+      {error && <p className="text-[11px] text-destructive">{error}</p>}
     </div>
   );
 }

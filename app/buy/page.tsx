@@ -8,6 +8,8 @@ import FormField from "@/components/FormField";
 import Collapsible from "@/components/Collapsible";
 import Disclaimer from "@/components/Disclaimer";
 import SourceBadge from "@/components/SourceBadge";
+import { Input } from "@/components/ui/input";
+import { NativeSelect } from "@/components/ui/native-select";
 import { calculateBuy } from "@/lib/calc-buy";
 import { evaluateRentProduct } from "@/lib/calc-rent";
 import { calcLtv } from "@/lib/calc-ltv";
@@ -119,47 +121,44 @@ export default function BuyPage() {
     );
   }, [v.annualIncome, v.totalAsset, v.housingCount, v.isFirstTime, v.tag, loanRegion, products]);
 
-  const fc = "w-full bg-transparent py-2.5 px-3 text-sm outline-none placeholder:text-stone-300";
-  const nc = fc + " text-right tabular-nums";  // number inputs
-
   return (
     <PageShell>
       <h1 className="mb-1 text-xl font-bold">🏡 내가 집을 살 수 있을까?</h1>
-      <p className="mb-6 text-sm text-stone-400">
+      <p className="mb-6 text-sm text-muted-foreground">
         현재 자산과 소득으로 매수 가능한 가격을 추정해요
       </p>
 
       {/* ── 자산 · 소득 ── */}
-      <div className="rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
-        <p className="mb-4 text-xs font-semibold text-stone-400">💰 자산 · 소득</p>
+      <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+        <p className="mb-4 text-xs font-semibold text-muted-foreground">💰 자산 · 소득</p>
         <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
           <FormField label="보유 현금" htmlFor="cash" suffix="만원">
-            <input id="cash" type="number" className={nc} {...register("cash", { valueAsNumber: true })} />
+            <Input id="cash" type="number" variant="ghost" className="text-right tabular-nums" {...register("cash", { valueAsNumber: true })} />
           </FormField>
           <FormField label="월 저축액" htmlFor="monthlySaving" suffix="만원">
-            <input id="monthlySaving" type="number" className={nc} {...register("monthlySaving", { valueAsNumber: true })} />
+            <Input id="monthlySaving" type="number" variant="ghost" className="text-right tabular-nums" {...register("monthlySaving", { valueAsNumber: true })} />
           </FormField>
           <FormField label="목표 기간" htmlFor="targetYears" suffix="년">
-            <input id="targetYears" type="number" className={nc} {...register("targetYears", { valueAsNumber: true })} />
+            <Input id="targetYears" type="number" variant="ghost" className="text-right tabular-nums" {...register("targetYears", { valueAsNumber: true })} />
           </FormField>
           <FormField label="연 소득" htmlFor="annualIncome" suffix="만원">
-            <input id="annualIncome" type="number" className={nc} {...register("annualIncome", { valueAsNumber: true })} />
+            <Input id="annualIncome" type="number" variant="ghost" className="text-right tabular-nums" {...register("annualIncome", { valueAsNumber: true })} />
           </FormField>
           <FormField label="총 자산" htmlFor="totalAsset" suffix="만원">
-            <input id="totalAsset" type="number" className={nc} {...register("totalAsset", { valueAsNumber: true })} />
+            <Input id="totalAsset" type="number" variant="ghost" className="text-right tabular-nums" {...register("totalAsset", { valueAsNumber: true })} />
           </FormField>
           <FormField label="월 부채상환" htmlFor="monthlyDebtPayment" suffix="만원">
-            <input id="monthlyDebtPayment" type="number" className={nc} {...register("monthlyDebtPayment", { valueAsNumber: true })} />
+            <Input id="monthlyDebtPayment" type="number" variant="ghost" className="text-right tabular-nums" {...register("monthlyDebtPayment", { valueAsNumber: true })} />
           </FormField>
         </div>
       </div>
 
       {/* ── 내 조건 ── */}
-      <div className="mt-3 rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
-        <p className="mb-4 text-xs font-semibold text-stone-400">🏷️ 내 조건</p>
+      <div className="mt-3 rounded-2xl border border-border bg-card p-5 shadow-sm">
+        <p className="mb-4 text-xs font-semibold text-muted-foreground">🏷️ 내 조건</p>
         <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
           <FormField label="지역" htmlFor="regionType">
-            <select id="regionType" className={fc} {...register("regionType")}>
+            <NativeSelect id="regionType" variant="ghost" {...register("regionType")}>
               {regionTypes.map((r) => (
                 <option key={r.id} value={r.id}>
                   {r.label}
@@ -172,17 +171,17 @@ export default function BuyPage() {
                   <option value="non_metro">비수도권</option>
                 </>
               )}
-            </select>
+            </NativeSelect>
           </FormField>
           <FormField label="보유 주택 수" htmlFor="housingCount">
-            <select id="housingCount" className={fc} {...register("housingCount", { valueAsNumber: true })}>
+            <NativeSelect id="housingCount" variant="ghost" {...register("housingCount", { valueAsNumber: true })}>
               <option value={0}>무주택</option>
               <option value={1}>1주택</option>
               <option value={2}>2주택 이상</option>
-            </select>
+            </NativeSelect>
           </FormField>
           <FormField label="가구 특성" htmlFor="tag">
-            <select id="tag" className={fc} {...register("tag")}>
+            <NativeSelect id="tag" variant="ghost" {...register("tag")}>
               <option value="general">일반</option>
               <option value="youth">🧑 청년 (만 19~39세)</option>
               <option value="newlywed">🤵 신혼부부</option>
@@ -190,12 +189,12 @@ export default function BuyPage() {
               <option value="multi_child_3">👶👶👶 3자녀 이상</option>
               <option value="single_parent">👨‍👧 한부모</option>
               <option value="newborn">🍼 신생아 (2년 내 출산)</option>
-            </select>
+            </NativeSelect>
           </FormField>
           <FormField label="생애최초" htmlFor="isFirstTime">
-            <label className="flex cursor-pointer items-center gap-2 text-sm">
-              <input id="isFirstTime" type="checkbox" className="h-4 w-4 rounded border-stone-300 text-sky-500 focus:ring-sky-200" {...register("isFirstTime")} />
-              <span className="text-stone-600">생애최초 구입</span>
+            <label className="flex cursor-pointer items-center gap-2 px-3 py-2.5 text-sm">
+              <input id="isFirstTime" type="checkbox" className="h-4 w-4 rounded border-input accent-primary" {...register("isFirstTime")} />
+              <span className="text-foreground">생애최초 구입</span>
             </label>
           </FormField>
         </div>
@@ -204,33 +203,33 @@ export default function BuyPage() {
       {/* ── LTV 자동 계산 결과 ── */}
       <div className={`mt-3 flex items-center justify-between rounded-2xl px-5 py-3 ${
         ltvResult.ltv > 0
-          ? "border border-sky-100 bg-sky-50/50"
-          : "border border-red-100 bg-red-50/50"
+          ? "border border-primary/20 bg-primary/5"
+          : "border border-destructive/20 bg-destructive/5"
       }`}>
         <div>
-          <p className="text-xs text-stone-500">📊 적용 LTV</p>
+          <p className="text-xs text-muted-foreground">📊 적용 LTV</p>
           <p className="text-lg font-bold">
             {ltvResult.ltv > 0
               ? formatPercent(ltvResult.ltv, 0)
               : "대출 불가"}
           </p>
         </div>
-        <p className="text-xs text-stone-400">{ltvResult.note}</p>
+        <p className="text-xs text-muted-foreground">{ltvResult.note}</p>
       </div>
 
       {/* ── 기본 계산 결과 ── */}
       <div className="mt-8">
-        <h2 className="mb-3 text-sm font-semibold text-stone-500">📋 매수 가능가 추정</h2>
+        <h2 className="mb-3 text-sm font-semibold text-muted-foreground">📋 매수 가능가 추정</h2>
 
         {ltvResult.ltv === 0 ? (
-          <div className="rounded-2xl border border-red-100 bg-red-50/60 p-6 text-center">
+          <div className="rounded-2xl border border-destructive/20 bg-destructive/5 p-6 text-center">
             <p className="text-2xl">🚫</p>
-            <p className="mt-2 font-semibold text-red-600">주담대 원칙적 불가 조건</p>
-            <p className="mt-1 text-sm text-red-400">
+            <p className="mt-2 font-semibold text-destructive">주담대 원칙적 불가 조건</p>
+            <p className="mt-1 text-sm text-destructive/70">
               현재 조건에서는 주택담보대출이 제한되어, 자기자금으로만 매수 가능해요.
             </p>
             <p className="mt-3 text-xl font-bold">{formatKRW(result.futureAsset)}</p>
-            <p className="text-xs text-stone-400">{v.targetYears}년 후 예상 자기자금</p>
+            <p className="text-xs text-muted-foreground">{v.targetYears}년 후 예상 자기자금</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-3">
@@ -242,7 +241,7 @@ export default function BuyPage() {
         )}
 
         <Collapsible title="계산식 자세히 보기">
-          <ul className="space-y-1 text-xs text-stone-500">
+          <ul className="space-y-1 text-xs text-muted-foreground">
             <li>· 적용 LTV: {formatPercent(ltvResult.ltv, 0)} — {ltvResult.note}</li>
             {result.assumptions.map((a, i) => (
               <li key={i}>· {a}</li>
@@ -254,7 +253,7 @@ export default function BuyPage() {
       {/* ── 정책상품 매칭 ── */}
       {productResults.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-3 text-sm font-semibold text-stone-500">🏛️ 정책 대출상품 매칭</h2>
+          <h2 className="mb-3 text-sm font-semibold text-muted-foreground">🏛️ 정책 대출상품 매칭</h2>
           <div className="space-y-3">
             {productResults.map((r) => {
               const ps = findSourcesByIds(allSources, r.product.sourceIds);
@@ -263,26 +262,26 @@ export default function BuyPage() {
                   key={r.product.id}
                   className={`rounded-2xl border p-4 ${
                     r.eligible
-                      ? "border-sky-100 bg-sky-50/40"
-                      : "border-stone-100 bg-stone-50/30"
+                      ? "border-primary/20 bg-primary/5"
+                      : "border-border bg-muted/30"
                   }`}
                 >
                   <div className="flex items-center gap-2">
                     <span>{r.eligible ? "✅" : "❌"}</span>
                     <span className="text-sm font-semibold">{r.product.name}</span>
                     <span className={`ml-auto rounded-full px-2 py-0.5 text-[11px] font-medium ${
-                      r.eligible ? "bg-sky-100 text-sky-700" : "bg-stone-100 text-stone-500"
+                      r.eligible ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
                     }`}>
                       {r.eligible ? "자격 충족" : "미충족"}
                     </span>
                   </div>
                   {r.eligible && r.product.interestRange && (
-                    <p className="mt-2 text-xs text-stone-400">
+                    <p className="mt-2 text-xs text-muted-foreground">
                       📊 금리 {r.product.interestRange.min}% ~ {r.product.interestRange.max}% · 최대 {formatKRW(r.maxLoanAmount)}
                     </p>
                   )}
                   <Collapsible title="상세">
-                    <ul className="space-y-1 text-xs text-stone-500">
+                    <ul className="space-y-1 text-xs text-muted-foreground">
                       {r.reasons.map((reason, i) => (<li key={i}>· {reason}</li>))}
                       {r.product.notes.map((note, i) => (<li key={`n-${i}`} className="text-amber-500">⚠️ {note}</li>))}
                     </ul>

@@ -32,20 +32,55 @@ const cards = [
 export default function Home() {
   return (
     <PageShell>
-      <div className="mb-12 text-center">
-        <Image
-          src="/logo.jpg"
-          alt="내집내놔"
-          width={120}
-          height={120}
-          className="mx-auto rounded-full"
-        />
-        <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
-          내집내놔
-        </h1>
-        <p className="mt-3 text-base text-gray-500">
-          내 월급이 허락하는 집, 그리고 애증의 세금
-        </p>
+      <div className="mb-12">
+        <div className="flex items-center justify-center gap-6">
+          <nav className="flex flex-col items-end gap-2 text-sm font-medium text-gray-500">
+            <Link
+              href="/buy"
+              className="rounded-full px-4 py-1.5 transition hover:bg-green-50 hover:text-green-600"
+            >
+              매매
+            </Link>
+            <Link
+              href="/tax"
+              className="rounded-full px-4 py-1.5 transition hover:bg-green-50 hover:text-green-600"
+            >
+              매도
+            </Link>
+          </nav>
+
+          <Image
+            src="/logo.jpg"
+            alt="내집내놔"
+            width={120}
+            height={120}
+            className="rounded-full"
+          />
+
+          <nav className="flex flex-col items-start gap-2 text-sm font-medium text-gray-500">
+            <Link
+              href="/rent"
+              className="rounded-full px-4 py-1.5 transition hover:bg-green-50 hover:text-green-600"
+            >
+              전세
+            </Link>
+            <Link
+              href="/rent"
+              className="rounded-full px-4 py-1.5 transition hover:bg-green-50 hover:text-green-600"
+            >
+              월세
+            </Link>
+          </nav>
+        </div>
+
+        <div className="mt-4 text-center">
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+            내집내놔
+          </h1>
+          <p className="mt-3 text-base text-gray-500">
+            내 월급이 허락하는 집, 그리고 애증의 세금
+          </p>
+        </div>
       </div>
 
       <div className="grid gap-4">

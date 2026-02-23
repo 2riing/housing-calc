@@ -26,10 +26,10 @@ export default function Header() {
             매매
           </Link>
           <Link
-            href="/rent"
+            href="/tax"
             className="rounded-full px-3 py-1 transition hover:bg-green-50 hover:text-green-600"
           >
-            전세
+            매도
           </Link>
         </nav>
 
@@ -40,24 +40,19 @@ export default function Header() {
 
         <nav className="flex items-center gap-1 text-[13px] font-medium text-gray-500">
           <Link
-            href="/tax"
+            href="/rent"
             className="rounded-full px-3 py-1 transition hover:bg-green-50 hover:text-green-600"
           >
-            매도
+            전세
           </Link>
           <Link
-            href="/sources"
+            href="/rent"
             className="rounded-full px-3 py-1 transition hover:bg-green-50 hover:text-green-600"
           >
-            근거
+            월세
           </Link>
         </nav>
       </div>
-      {updated && (
-        <div className="border-t border-gray-100 py-1 text-center text-[11px] text-gray-300">
-          {updated.updatedAt} 기준
-        </div>
-      )}
     </header>
   );
 }

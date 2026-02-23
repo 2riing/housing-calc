@@ -54,33 +54,33 @@ export default function TaxPage() {
     );
   }, [v, rules]);
 
-  const ic =
-    "w-full bg-transparent py-2 pl-3 pr-2 text-right text-sm tabular-nums outline-none";
+  const nc =
+    "w-full bg-transparent py-2.5 px-3 text-right text-sm tabular-nums outline-none placeholder:text-stone-300";
 
   return (
     <PageShell>
       <h1 className="mb-1 text-xl font-bold">💸 집 팔면 남는 돈?</h1>
-      <p className="mb-6 text-sm text-gray-400">
+      <p className="mb-6 text-sm text-stone-400">
         양도세, 중개비 다 빼고 진짜 손에 쥐는 금액
       </p>
 
       {/* ── 입력 ── */}
-      <div className="grid grid-cols-3 gap-x-6 gap-y-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
+      <div className="grid grid-cols-3 gap-x-6 gap-y-4 rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
         <FormField label="🏷️ 취득가" htmlFor="acquisitionPrice" suffix="만원">
-          <input id="acquisitionPrice" type="number" className={ic} {...register("acquisitionPrice", { valueAsNumber: true })} />
+          <input id="acquisitionPrice" type="number" className={nc} {...register("acquisitionPrice", { valueAsNumber: true })} />
         </FormField>
         <FormField label="💴 양도가" htmlFor="salePrice" suffix="만원">
-          <input id="salePrice" type="number" className={ic} {...register("salePrice", { valueAsNumber: true })} />
+          <input id="salePrice" type="number" className={nc} {...register("salePrice", { valueAsNumber: true })} />
         </FormField>
         <FormField label="🧾 필요경비" htmlFor="expenses" suffix="만원">
-          <input id="expenses" type="number" className={ic} {...register("expenses", { valueAsNumber: true })} />
+          <input id="expenses" type="number" className={nc} {...register("expenses", { valueAsNumber: true })} />
         </FormField>
       </div>
 
       {/* ── 결과 ── */}
       {result && (
         <div className="mt-8">
-          <h2 className="mb-3 text-sm font-semibold text-gray-500">
+          <h2 className="mb-3 text-sm font-semibold text-stone-500">
             📋 계산 결과
           </h2>
 
@@ -120,21 +120,21 @@ export default function TaxPage() {
               </div>
 
               <div className="mt-3 grid grid-cols-2 gap-3">
-                <div className="rounded-xl bg-gray-50 px-4 py-3">
-                  <p className="text-[11px] text-gray-400">적용 세율</p>
+                <div className="rounded-xl bg-stone-50 px-4 py-3">
+                  <p className="text-[11px] text-stone-400">적용 세율</p>
                   <p className="text-lg font-bold">
                     {formatPercent(result.appliedBracket.rate, 0)}
                   </p>
-                  <p className="text-[11px] text-gray-400">
+                  <p className="text-[11px] text-stone-400">
                     누진공제 {formatKRW(result.appliedBracket.deduction)}
                   </p>
                 </div>
-                <div className="rounded-xl bg-gray-50 px-4 py-3">
-                  <p className="text-[11px] text-gray-400">지방소득세</p>
+                <div className="rounded-xl bg-stone-50 px-4 py-3">
+                  <p className="text-[11px] text-stone-400">지방소득세</p>
                   <p className="text-lg font-bold">
                     {formatKRW(result.localTax)}
                   </p>
-                  <p className="text-[11px] text-gray-400">산출세액의 10%</p>
+                  <p className="text-[11px] text-stone-400">산출세액의 10%</p>
                 </div>
               </div>
 
@@ -145,18 +145,18 @@ export default function TaxPage() {
                       key={i}
                       className="flex items-baseline justify-between text-xs"
                     >
-                      <span className="text-gray-500">{step.label}</span>
+                      <span className="text-stone-500">{step.label}</span>
                       <span className="font-mono font-medium">
                         {formatKRW(step.value)}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 space-y-1 border-t border-gray-100 pt-3">
+                <div className="mt-3 space-y-1 border-t border-stone-100 pt-3">
                   {result.steps
                     .filter((s) => s.formula)
                     .map((step, i) => (
-                      <p key={i} className="text-[11px] text-gray-400">
+                      <p key={i} className="text-[11px] text-stone-400">
                         {step.label}: {step.formula}
                       </p>
                     ))}

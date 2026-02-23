@@ -70,50 +70,48 @@ export default function RentPage() {
   const eligible = results.filter((r) => r.eligible);
   const ineligible = results.filter((r) => !r.eligible);
 
-  const ic =
-    "w-full bg-transparent py-2 pl-3 pr-2 text-right text-sm tabular-nums outline-none";
-  const sc =
-    "w-full rounded-lg border border-gray-200 bg-gray-50/50 py-2 pl-3 pr-2 text-sm outline-none transition focus:border-green-400 focus:bg-white focus:ring-2 focus:ring-green-100";
+  const fc = "w-full bg-transparent py-2.5 px-3 text-sm outline-none placeholder:text-stone-300";
+  const nc = fc + " text-right tabular-nums";
 
   return (
     <PageShell>
       <h1 className="mb-1 text-xl font-bold">🔑 전세를 얻을 수 있을까?</h1>
-      <p className="mb-6 text-sm text-gray-400">
+      <p className="mb-6 text-sm text-stone-400">
         전세보증금 대출 자격과 예상 한도를 확인해요
       </p>
 
       {/* ── 기본 정보 ── */}
-      <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-        <p className="mb-4 text-xs font-semibold text-gray-400">💰 자산 · 소득</p>
+      <div className="rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
+        <p className="mb-4 text-xs font-semibold text-stone-400">💰 자산 · 소득</p>
         <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
           <FormField label="전세보증금" htmlFor="deposit" suffix="만원">
-            <input id="deposit" type="number" className={ic} {...register("deposit", { valueAsNumber: true })} />
+            <input id="deposit" type="number" className={nc} {...register("deposit", { valueAsNumber: true })} />
           </FormField>
           <FormField label="연 소득" htmlFor="annualIncome" suffix="만원">
-            <input id="annualIncome" type="number" className={ic} {...register("annualIncome", { valueAsNumber: true })} />
+            <input id="annualIncome" type="number" className={nc} {...register("annualIncome", { valueAsNumber: true })} />
           </FormField>
           <FormField label="총 자산" htmlFor="totalAsset" suffix="만원">
-            <input id="totalAsset" type="number" className={ic} {...register("totalAsset", { valueAsNumber: true })} />
+            <input id="totalAsset" type="number" className={nc} {...register("totalAsset", { valueAsNumber: true })} />
           </FormField>
         </div>
       </div>
 
       {/* ── 조건 ── */}
-      <div className="mt-3 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm">
-        <p className="mb-4 text-xs font-semibold text-gray-400">🏷️ 내 조건</p>
+      <div className="mt-3 rounded-2xl border border-stone-100 bg-white p-5 shadow-sm">
+        <p className="mb-4 text-xs font-semibold text-stone-400">🏷️ 내 조건</p>
         <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
           <FormField label="지역" htmlFor="regionType">
-            <select id="regionType" className={sc} {...register("regionType")}>
+            <select id="regionType" className={fc} {...register("regionType")}>
               <option value="regulated">조정대상지역</option>
               <option value="metro">비조정 수도권</option>
               <option value="non_metro">비수도권</option>
             </select>
           </FormField>
           <FormField label="나이" htmlFor="age" suffix="세">
-            <input id="age" type="number" className={ic} {...register("age", { valueAsNumber: true })} />
+            <input id="age" type="number" className={nc} {...register("age", { valueAsNumber: true })} />
           </FormField>
           <FormField label="가구 특성" htmlFor="tag">
-            <select id="tag" className={sc} {...register("tag")}>
+            <select id="tag" className={fc} {...register("tag")}>
               <option value="general">일반</option>
               <option value="youth">🧑 청년 (만 19~34세)</option>
               <option value="newlywed">🤵 신혼부부</option>
@@ -124,12 +122,12 @@ export default function RentPage() {
           </FormField>
           <FormField label="무주택 여부" htmlFor="isHomeless">
             <label className="flex cursor-pointer items-center gap-2 text-sm">
-              <input id="isHomeless" type="checkbox" className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-400" {...register("isHomeless")} />
-              <span className="text-gray-600">무주택자</span>
+              <input id="isHomeless" type="checkbox" className="h-4 w-4 rounded border-stone-300 text-sky-500 focus:ring-sky-100" {...register("isHomeless")} />
+              <span className="text-stone-600">무주택자</span>
             </label>
           </FormField>
           <FormField label="혼인 기간" htmlFor="marriageYears" suffix="년차">
-            <input id="marriageYears" type="number" className={ic} {...register("marriageYears", { valueAsNumber: true })} />
+            <input id="marriageYears" type="number" className={nc} {...register("marriageYears", { valueAsNumber: true })} />
           </FormField>
         </div>
       </div>
@@ -140,7 +138,7 @@ export default function RentPage() {
           {/* 자격 충족 상품 */}
           {eligible.length > 0 && (
             <div>
-              <h2 className="mb-3 text-sm font-semibold text-gray-500">
+              <h2 className="mb-3 text-sm font-semibold text-stone-500">
                 ✅ 자격 충족 상품 ({eligible.length}개)
               </h2>
               <div className="space-y-3">
@@ -149,7 +147,7 @@ export default function RentPage() {
                   return (
                     <div
                       key={r.product.id}
-                      className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50/60 to-emerald-50/60 p-5"
+                      className="rounded-2xl border border-emerald-100 bg-gradient-to-br from-green-50/60 to-emerald-50/60 p-5"
                     >
                       <div className="flex items-center gap-2">
                         <span className="text-lg">✅</span>
@@ -160,12 +158,12 @@ export default function RentPage() {
                         <ResultCard emoji="💰" title="필요 자기자금" value={r.requiredCash} highlight />
                       </div>
                       {r.product.interestRange && (
-                        <p className="mt-3 text-xs text-gray-400">
+                        <p className="mt-3 text-xs text-stone-400">
                           📊 금리 {r.product.interestRange.min}% ~ {r.product.interestRange.max}%
                         </p>
                       )}
                       <Collapsible title="상세 내역">
-                        <ul className="space-y-1 text-xs text-gray-500">
+                        <ul className="space-y-1 text-xs text-stone-500">
                           {r.reasons.map((reason, i) => (<li key={i}>· {reason}</li>))}
                           {r.product.notes.map((note, i) => (<li key={`n-${i}`} className="text-amber-500">⚠️ {note}</li>))}
                         </ul>
@@ -181,18 +179,18 @@ export default function RentPage() {
           {/* 자격 미충족 */}
           {ineligible.length > 0 && (
             <div>
-              <h2 className="mb-3 text-sm font-semibold text-gray-500">
+              <h2 className="mb-3 text-sm font-semibold text-stone-500">
                 ❌ 미충족 상품 ({ineligible.length}개)
               </h2>
               <div className="space-y-2">
                 {ineligible.map((r) => (
-                  <div key={r.product.id} className="rounded-xl border border-gray-100 bg-gray-50/30 px-4 py-3">
+                  <div key={r.product.id} className="rounded-xl border border-stone-100 bg-stone-50/30 px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <span className="text-gray-300">❌</span>
-                      <span className="text-sm font-medium text-gray-400">{r.product.name}</span>
+                      <span className="text-stone-300">❌</span>
+                      <span className="text-sm font-medium text-stone-400">{r.product.name}</span>
                     </div>
                     <Collapsible title="미충족 사유">
-                      <ul className="space-y-1 text-xs text-gray-400">
+                      <ul className="space-y-1 text-xs text-stone-400">
                         {r.reasons.map((reason, i) => (<li key={i}>· {reason}</li>))}
                       </ul>
                     </Collapsible>

@@ -11,11 +11,11 @@ export default function Disclaimer({ messages }: Props) {
   const items = messages && messages.length > 0 ? messages : defaults;
 
   return (
-    <div className="mt-6 rounded-xl bg-amber-50/60 px-4 py-3">
-      <p className="mb-1.5 text-xs font-medium text-amber-700">
-        💡 참고사항
+    <div className="mt-6 rounded-xl bg-stone-100/60 px-4 py-3">
+      <p className="mb-1.5 text-xs font-medium text-stone-500">
+        참고사항
       </p>
-      <ul className="space-y-0.5 text-[11px] leading-relaxed text-amber-600/80">
+      <ul className="space-y-0.5 text-[11px] leading-relaxed text-stone-400">
         {items.map((m, i) => (
           <li key={i}>· {m}</li>
         ))}

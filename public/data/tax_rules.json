@@ -1,0 +1,57 @@
+{
+  "capitalGainsSimple": {
+    "version": "2026-02-23",
+    "sourceIds": [
+      "nts_capgain",
+      "nts_tax_brackets"
+    ],
+    "localIncomeTaxRate": 0.1,
+    "basicDeduction": 2500000,
+    "brackets": [
+      {
+        "upTo": 14000000,
+        "rate": 0.06,
+        "deduction": 0
+      },
+      {
+        "upTo": 50000000,
+        "rate": 0.15,
+        "deduction": 1260000
+      },
+      {
+        "upTo": 88000000,
+        "rate": 0.24,
+        "deduction": 5760000
+      },
+      {
+        "upTo": 150000000,
+        "rate": 0.35,
+        "deduction": 15440000
+      },
+      {
+        "upTo": 300000000,
+        "rate": 0.38,
+        "deduction": 19940000
+      },
+      {
+        "upTo": 500000000,
+        "rate": 0.4,
+        "deduction": 25940000
+      },
+      {
+        "upTo": 1000000000,
+        "rate": 0.42,
+        "deduction": 35940000
+      },
+      {
+        "upTo": null,
+        "rate": 0.45,
+        "deduction": 65940000
+      }
+    ],
+    "notes": [
+      "MVP 단순 모델: 1세대1주택 비과세, 장기보유특별공제, 다주택 중과, 조정지역 등은 미반영.",
+      "세율표는 2025 귀속 종합소득세 기본세율 기준(양도소득세 동일 적용)."
+    ]
+  }
+}

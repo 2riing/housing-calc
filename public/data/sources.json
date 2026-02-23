@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "id": "nts_capgain",
+      "title": "국세청 양도소득세 안내",
+      "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2312&cntntsId=7711",
+      "publisher": "국세청(NTS)",
+      "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "nts_tax_brackets",
+      "title": "국세청 종합소득세 세율표",
+      "url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=2227&cntntsId=7667",
+      "publisher": "국세청(NTS)",
+      "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "myhome_lease",
+      "title": "마이홈 버팀목 전세자금대출 안내",
+      "url": "https://www.myhome.go.kr/hws/portal/cont/selectContDetail.do#",
+      "publisher": "마이홈포털",
+      "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "hf_didimdol",
+      "title": "한국주택금융공사 디딤돌대출 안내",
+      "url": "https://www.hf.go.kr/hf/sub03/sub01.do",
+      "publisher": "한국주택금융공사(HF)",
+      "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "fss_dsr",
+      "title": "금융감독원 DSR 안내",
+      "url": "https://www.fss.or.kr/fss/kr/main.html",
+      "publisher": "금융감독원(FSS)",
+      "checkedAt": "2026-02-23"
+    },
+    {
+      "id": "gov_ltv",
+      "title": "주택담보대출 LTV 규제 안내",
+      "url": "https://www.fss.or.kr/fss/kr/main.html",
+      "publisher": "금융감독원(FSS)",
+      "checkedAt": "2026-02-23"
+    }
+  ]
+}

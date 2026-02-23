@@ -1,0 +1,146 @@
+{
+  "products": [
+    {
+      "id": "lease_burtimok",
+      "name": "버팀목 전세자금대출",
+      "type": "lease",
+      "version": "2026-02-24",
+      "sourceIds": ["myhome_lease"],
+      "eligibility": {
+        "mustBeHomeless": true,
+        "regions": ["metro", "non_metro"],
+        "tags": ["general", "youth", "newlywed", "multi_child_2", "multi_child_3", "single_parent"],
+        "incomeMax": 50000000,
+        "assetMax": 346000000,
+        "ageRange": null
+      },
+      "limits": [
+        { "tag": "general", "region": "metro", "maxAmount": 120000000, "ratioMax": 0.7 },
+        { "tag": "general", "region": "non_metro", "maxAmount": 80000000, "ratioMax": 0.7 },
+        { "tag": "youth", "region": "metro", "maxAmount": 120000000, "ratioMax": 0.8 },
+        { "tag": "youth", "region": "non_metro", "maxAmount": 80000000, "ratioMax": 0.8 },
+        { "tag": "newlywed", "region": "metro", "maxAmount": 200000000, "ratioMax": 0.8 },
+        { "tag": "newlywed", "region": "non_metro", "maxAmount": 150000000, "ratioMax": 0.8 },
+        { "tag": "multi_child_2", "region": "metro", "maxAmount": 200000000, "ratioMax": 0.8 },
+        { "tag": "multi_child_2", "region": "non_metro", "maxAmount": 150000000, "ratioMax": 0.8 },
+        { "tag": "multi_child_3", "region": "metro", "maxAmount": 220000000, "ratioMax": 0.8 },
+        { "tag": "multi_child_3", "region": "non_metro", "maxAmount": 170000000, "ratioMax": 0.8 },
+        { "tag": "single_parent", "region": "metro", "maxAmount": 120000000, "ratioMax": 0.8 },
+        { "tag": "single_parent", "region": "non_metro", "maxAmount": 80000000, "ratioMax": 0.8 }
+      ],
+      "interestRange": { "min": 1.8, "max": 2.7 },
+      "notes": [
+        "MVP 더미 데이터: 실제 수치는 마이홈포털에서 확인 후 수정하세요.",
+        "소득·자산 기준은 가구원 수, 가구 특성에 따라 달라집니다."
+      ]
+    },
+    {
+      "id": "lease_youth_jeonse",
+      "name": "청년전용 버팀목전세자금",
+      "type": "lease",
+      "version": "2026-02-24",
+      "sourceIds": ["myhome_lease"],
+      "eligibility": {
+        "mustBeHomeless": true,
+        "regions": ["metro", "non_metro"],
+        "tags": ["youth"],
+        "incomeMax": 35000000,
+        "assetMax": 280000000,
+        "ageRange": { "min": 19, "max": 34 }
+      },
+      "limits": [
+        { "tag": "youth", "region": "metro", "maxAmount": 70000000, "ratioMax": 0.8 },
+        { "tag": "youth", "region": "non_metro", "maxAmount": 70000000, "ratioMax": 0.8 }
+      ],
+      "interestRange": { "min": 1.5, "max": 2.1 },
+      "notes": [
+        "만 19세~34세 단독세대주 대상.",
+        "보증금 5천만원(수도권 7천만원) 이하 주택."
+      ]
+    },
+    {
+      "id": "lease_newlywed_jeonse",
+      "name": "신혼부부 전용 전세자금",
+      "type": "lease",
+      "version": "2026-02-24",
+      "sourceIds": ["myhome_lease"],
+      "eligibility": {
+        "mustBeHomeless": true,
+        "regions": ["metro", "non_metro"],
+        "tags": ["newlywed"],
+        "incomeMax": 60000000,
+        "assetMax": 346000000,
+        "ageRange": null
+      },
+      "limits": [
+        { "tag": "newlywed", "region": "metro", "maxAmount": 300000000, "ratioMax": 0.8 },
+        { "tag": "newlywed", "region": "non_metro", "maxAmount": 200000000, "ratioMax": 0.8 }
+      ],
+      "interestRange": { "min": 1.5, "max": 2.4 },
+      "notes": [
+        "혼인신고 7년 이내 또는 3개월 이내 예정 부부.",
+        "부부합산 소득 기준."
+      ]
+    },
+    {
+      "id": "purchase_didimdol",
+      "name": "디딤돌대출",
+      "type": "purchase",
+      "version": "2026-02-24",
+      "sourceIds": ["hf_didimdol"],
+      "eligibility": {
+        "mustBeHomeless": true,
+        "regions": ["metro", "non_metro"],
+        "tags": ["general", "youth", "newlywed", "multi_child_2", "multi_child_3", "single_parent", "first_time"],
+        "incomeMax": 60000000,
+        "assetMax": 549000000,
+        "ageRange": null
+      },
+      "limits": [
+        { "tag": "general", "region": "metro", "maxAmount": 250000000, "ratioMax": 0.7 },
+        { "tag": "general", "region": "non_metro", "maxAmount": 250000000, "ratioMax": 0.7 },
+        { "tag": "youth", "region": "metro", "maxAmount": 250000000, "ratioMax": 0.7 },
+        { "tag": "youth", "region": "non_metro", "maxAmount": 250000000, "ratioMax": 0.7 },
+        { "tag": "first_time", "region": "metro", "maxAmount": 300000000, "ratioMax": 0.8 },
+        { "tag": "first_time", "region": "non_metro", "maxAmount": 300000000, "ratioMax": 0.8 },
+        { "tag": "newlywed", "region": "metro", "maxAmount": 400000000, "ratioMax": 0.7 },
+        { "tag": "newlywed", "region": "non_metro", "maxAmount": 400000000, "ratioMax": 0.7 },
+        { "tag": "multi_child_2", "region": "metro", "maxAmount": 400000000, "ratioMax": 0.7 },
+        { "tag": "multi_child_2", "region": "non_metro", "maxAmount": 400000000, "ratioMax": 0.7 },
+        { "tag": "multi_child_3", "region": "metro", "maxAmount": 400000000, "ratioMax": 0.8 },
+        { "tag": "multi_child_3", "region": "non_metro", "maxAmount": 400000000, "ratioMax": 0.8 },
+        { "tag": "single_parent", "region": "metro", "maxAmount": 300000000, "ratioMax": 0.7 },
+        { "tag": "single_parent", "region": "non_metro", "maxAmount": 300000000, "ratioMax": 0.7 }
+      ],
+      "interestRange": { "min": 2.15, "max": 3.0 },
+      "notes": [
+        "MVP 더미 데이터: 실제 수치는 한국주택금융공사에서 확인 후 수정하세요.",
+        "대출한도는 담보가치, 소득, 기존부채에 따라 달라집니다."
+      ]
+    },
+    {
+      "id": "purchase_newborn",
+      "name": "신생아 특례 구입자금",
+      "type": "purchase",
+      "version": "2026-02-24",
+      "sourceIds": ["hf_didimdol"],
+      "eligibility": {
+        "mustBeHomeless": true,
+        "regions": ["metro", "non_metro"],
+        "tags": ["newborn"],
+        "incomeMax": 130000000,
+        "assetMax": 549000000,
+        "ageRange": null
+      },
+      "limits": [
+        { "tag": "newborn", "region": "metro", "maxAmount": 500000000, "ratioMax": 0.8 },
+        { "tag": "newborn", "region": "non_metro", "maxAmount": 500000000, "ratioMax": 0.8 }
+      ],
+      "interestRange": { "min": 1.6, "max": 3.3 },
+      "notes": [
+        "대출신청일 기준 2년 내 출산한 무주택 가구.",
+        "소득 8500만원 이하 특례금리, 초과 시 일반금리."
+      ]
+    }
+  ]
+}

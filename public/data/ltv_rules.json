@@ -1,0 +1,30 @@
+{
+  "version": "2026-02-24",
+  "sourceIds": ["gov_ltv", "fss_dsr"],
+  "regionTypes": [
+    { "id": "regulated", "label": "조정대상지역", "examples": "서울, 과천, 성남(분당·수정), 하남, 광명 등" },
+    { "id": "metro", "label": "비조정 수도권", "examples": "인천, 경기 대부분 지역" },
+    { "id": "non_metro", "label": "비수도권", "examples": "부산, 대구, 광주, 대전, 세종 등" }
+  ],
+  "rules": [
+    { "regionType": "regulated", "housingCount": 0, "isFirstTime": false, "ltv": 0.50, "note": "조정지역 무주택 일반" },
+    { "regionType": "regulated", "housingCount": 0, "isFirstTime": true,  "ltv": 0.80, "note": "조정지역 생애최초" },
+    { "regionType": "regulated", "housingCount": 1, "isFirstTime": false, "ltv": 0.50, "note": "조정지역 1주택 (처분조건부)" },
+    { "regionType": "regulated", "housingCount": 2, "isFirstTime": false, "ltv": 0.00, "note": "조정지역 2주택 이상 — 주담대 원칙적 불가" },
+
+    { "regionType": "metro",     "housingCount": 0, "isFirstTime": false, "ltv": 0.70, "note": "비조정 수도권 무주택" },
+    { "regionType": "metro",     "housingCount": 0, "isFirstTime": true,  "ltv": 0.80, "note": "비조정 수도권 생애최초" },
+    { "regionType": "metro",     "housingCount": 1, "isFirstTime": false, "ltv": 0.70, "note": "비조정 수도권 1주택" },
+    { "regionType": "metro",     "housingCount": 2, "isFirstTime": false, "ltv": 0.60, "note": "비조정 수도권 2주택 이상" },
+
+    { "regionType": "non_metro", "housingCount": 0, "isFirstTime": false, "ltv": 0.70, "note": "비수도권 무주택" },
+    { "regionType": "non_metro", "housingCount": 0, "isFirstTime": true,  "ltv": 0.80, "note": "비수도권 생애최초" },
+    { "regionType": "non_metro", "housingCount": 1, "isFirstTime": false, "ltv": 0.70, "note": "비수도권 1주택" },
+    { "regionType": "non_metro", "housingCount": 2, "isFirstTime": false, "ltv": 0.60, "note": "비수도권 2주택 이상" }
+  ],
+  "notes": [
+    "2024년 9월 기준 정부 발표 LTV 규제 기준 (MVP 더미).",
+    "실제 LTV는 주택 가격, 금융기관 심사 기준에 따라 달라집니다.",
+    "조정대상지역 목록은 수시로 변경되므로 최신 고시를 확인하세요."
+  ]
+}

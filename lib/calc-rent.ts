@@ -16,8 +16,24 @@ export function evaluateRentProduct(
   const reasons: string[] = [];
   let eligible = true;
 
-  const { deposit, region, annualIncome, totalAsset, isHomeless, tag } = input;
+  const { deposit, region, annualIncome, totalAsset, isHomeless, tag, age, marriageYears } = input;
   const { eligibility, limits } = product;
+
+  // 나이 체크
+  if (eligibility.ageRange && age !== undefined) {
+    if (age < eligibility.ageRange.min || age > eligibility.ageRange.max) {
+      eligible = false;
+      reasons.push(
+        `나이 ${age}세 → 대상 만 ${eligibility.ageRange.min}~${eligibility.ageRange.max}세`
+      );
+    }
+  }
+
+  // 신혼부부 혼인기간 체크 (혼인 7년 이내)
+  if (tag === "newlywed" && marriageYears !== undefined && marriageYears > 7) {
+    eligible = false;
+    reasons.push(`혼인 ${marriageYears}년차 → 7년 이내 요건 미충족`);
+  }
 
   // 무주택 체크
   if (eligibility.mustBeHomeless && !isHomeless) {
@@ -62,12 +78,19 @@ export function evaluateRentProduct(
       limits.find((l) => l.tag === "general" && l.region === region);
 
     if (matchingLimit) {
-      const byRatio = Math.floor(deposit * matchingLimit.ratioMax);
       const byMax = matchingLimit.maxAmount;
-      maxLoanAmount = Math.min(byRatio, byMax);
-      reasons.push(
-        `한도 = min(보증금×${(matchingLimit.ratioMax * 100).toFixed(0)}%, 최대 ${byMax.toLocaleString()}원)`
-      );
+      if (deposit > 0) {
+        // 전세: 보증금 대비 비율과 최대한도 중 작은 값
+        const byRatio = Math.floor(deposit * matchingLimit.ratioMax);
+        maxLoanAmount = Math.min(byRatio, byMax);
+        reasons.push(
+          `한도 = min(보증금×${(matchingLimit.ratioMax * 100).toFixed(0)}%, 최대 ${byMax.toLocaleString()}원)`
+        );
+      } else {
+        // 매매: 보증금 없으므로 최대한도 직접 적용
+        maxLoanAmount = byMax;
+        reasons.push(`한도 = 최대 ${byMax.toLocaleString()}원`);
+      }
     } else {
       reasons.push("해당 조건에 맞는 한도 정보가 없음");
     }

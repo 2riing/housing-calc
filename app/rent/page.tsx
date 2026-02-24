@@ -77,6 +77,8 @@ export default function RentPage() {
           totalAsset: manwonToWon(Number(v.totalAsset) || 0),
           isHomeless: v.isHomeless,
           tag: v.tag,
+          age: Number(v.age) || undefined,
+          marriageYears: Number(v.marriageYears) || undefined,
         },
         p
       )

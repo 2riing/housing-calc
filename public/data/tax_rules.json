@@ -61,9 +61,10 @@
     "tiers": [
       { "upTo": 50000000, "rate": 0.006, "cap": 250000 },
       { "upTo": 200000000, "rate": 0.005, "cap": 800000 },
-      { "upTo": 600000000, "rate": 0.004, "cap": null },
-      { "upTo": 900000000, "rate": 0.005, "cap": null },
-      { "upTo": null, "rate": 0.009, "cap": null }
+      { "upTo": 900000000, "rate": 0.004, "cap": null },
+      { "upTo": 1200000000, "rate": 0.005, "cap": null },
+      { "upTo": 1500000000, "rate": 0.006, "cap": null },
+      { "upTo": null, "rate": 0.007, "cap": null }
     ],
     "notes": ["2021.10 개편 기준 상한 요율. 실제 수수료는 중개사와 협의 가능."]
   }

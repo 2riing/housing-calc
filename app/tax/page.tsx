@@ -74,22 +74,23 @@ export default function TaxPage() {
 
   const salePriceWon = manwonToWon(Number(v.salePrice) || 0);
 
-  const result = useMemo(() => {
-    if (!rules) return null;
-    return calculateCapitalGainsTax(
-      {
-        acquisitionPrice: manwonToWon(Number(v.acquisitionPrice) || 0),
-        salePrice: salePriceWon,
-        expenses: manwonToWon(totalExpenses),
-      },
-      rules.capitalGainsSimple
-    );
-  }, [v.acquisitionPrice, salePriceWon, totalExpenses, rules]);
-
   const brokerageResult = useMemo(() => {
     if (!rules) return null;
     return calculateBrokerageFee(salePriceWon, rules.brokerageFee.tiers);
   }, [salePriceWon, rules]);
+
+  const result = useMemo(() => {
+    if (!rules) return null;
+    const saleBrokerageFee = brokerageResult?.fee ?? 0;
+    return calculateCapitalGainsTax(
+      {
+        acquisitionPrice: manwonToWon(Number(v.acquisitionPrice) || 0),
+        salePrice: salePriceWon,
+        expenses: manwonToWon(totalExpenses) + saleBrokerageFee,
+      },
+      rules.capitalGainsSimple
+    );
+  }, [v.acquisitionPrice, salePriceWon, totalExpenses, rules, brokerageResult]);
 
   const netProceeds = useMemo(() => {
     if (!result || !brokerageResult) return null;
@@ -118,7 +119,7 @@ export default function TaxPage() {
         <div className="mb-4 flex items-baseline justify-between">
           <h2 className="text-sm font-semibold">필요경비</h2>
           <span className="text-sm font-semibold tabular-nums">
-            합계 {totalExpenses.toLocaleString()}만원
+            합계 {totalExpenses.toLocaleString()}만원{brokerageResult ? ` + 중개수수료(양도) ${formatKRW(brokerageResult.fee)}` : ""}
           </span>
         </div>
 
@@ -263,7 +264,7 @@ export default function TaxPage() {
               </div>
 
               {/* 필요경비 내역 */}
-              {totalExpenses > 0 && (
+              {(totalExpenses > 0 || brokerageResult.fee > 0) && (
                 <>
                   <div className="border-t border-border pt-2" />
                   <p className="text-[11px] font-medium text-muted-foreground">필요경비 내역</p>
@@ -303,9 +304,15 @@ export default function TaxPage() {
                       <span className="font-mono font-medium">{formatKRW(manwonToWon(Number(v.capitalRepairs) || 0))}</span>
                     </div>
                   )}
+                  {brokerageResult.fee > 0 && (
+                    <div className="flex items-baseline justify-between text-xs pl-2">
+                      <span className="text-muted-foreground">중개수수료(양도)</span>
+                      <span className="font-mono font-medium">{formatKRW(brokerageResult.fee)}</span>
+                    </div>
+                  )}
                   <div className="flex items-baseline justify-between text-xs pl-2 font-medium">
                     <span className="text-muted-foreground">필요경비 합계</span>
-                    <span className="font-mono">{formatKRW(manwonToWon(totalExpenses))}</span>
+                    <span className="font-mono">{formatKRW(manwonToWon(totalExpenses) + brokerageResult.fee)}</span>
                   </div>
                 </>
               )}

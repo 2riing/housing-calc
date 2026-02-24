@@ -128,6 +128,8 @@ export interface RentFormInput {
   totalAsset: number;
   isHomeless: boolean;
   tag: string;
+  age?: number;
+  marriageYears?: number;
 }
 
 export interface RentProductResult {
